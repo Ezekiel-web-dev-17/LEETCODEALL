@@ -30,3 +30,22 @@ n == height.length
 --------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------*/
+
+/**
+ * @param {number[]} height
+ * @return {number}
+ */
+var maxArea = (function (height = [1, 8, 6, 2, 5, 4, 8, 3, 7]) {
+  let left = 0,
+    right = height.length - 1,
+    maxArea = 0;
+
+  while (left < right) {
+    maxArea = Math.max(
+      Math.min(height[left], height[right]) * (right - left),
+      maxArea
+    );
+
+    height[left] < height[right] ? left++ : right--;
+  }
+})();
